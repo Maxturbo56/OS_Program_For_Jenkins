@@ -1,22 +1,18 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Build') {
             steps {
-                // Clone your repository
-                git 'https://github.com/your/repository.git'
+                sh 'g++ -o add_numbers add_numbers.cpp' // Compile the C++ program
             }
         }
-
+        
         stage('Test') {
             steps {
-                // Install Python dependencies
-                sh 'pip install -r requirements.txt'
-
-                // Run the Python script to add two numbers
-                sh 'python add_numbers.py'
+                sh './add_numbers' // Run the compiled program
             }
         }
     }
 }
+
